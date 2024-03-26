@@ -2,15 +2,14 @@ import { useState, useEffect } from "react"
 import './TripList.css'
 export default function TripList() {
     const [trips,setTrips] = useState([])
+    const [url, setUrl] = useState('http://localhost:3000/trips')
     console.log(trips)
     useEffect(()=>{
-        fetch('http://localhost:3000/trips')
+        fetch(url)
         .then( response => response.json())
         .then( json => setTrips(json))
         .catch(err=>console.log(err)) 
-    }, [
-        //dependency array, to make the function run only once leave empty
-    ])
+    }, [ url ])
 
 
     return (
@@ -24,6 +23,17 @@ export default function TripList() {
               </li>
             ))}
           </ul>
+          <div className="filters">
+          <button onClick={()=> setUrl('http://localhost:3000/trips')}>
+                All
+            </button>
+            <button onClick={()=> setUrl('http://localhost:3000/trips?loc=europe')}>
+                Europe
+            </button>
+            <button onClick={()=> setUrl('http://localhost:3000/trips?loc=north_america')}>
+                North America
+            </button>
+          </div>
         </div>
       )
 }
