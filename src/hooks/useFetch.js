@@ -19,7 +19,7 @@ export const useFetch = (url) => {
             setError(null)
             } catch(err){
                 console.log(err.message)
-                setError('Could not fetch data!')
+                setError('Could not fetch data...')
                 setIsPending(false)
             }
         }

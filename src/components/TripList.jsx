@@ -7,6 +7,7 @@ export default function TripList() {
     return (
         <div className="trip-list">
           <h2>Trip List</h2>
+          {error && (<div> {error} </div>)}
           {isPending && (<div> Loading... </div>)}
           <ul>
             {trips && trips.map(trip => (
