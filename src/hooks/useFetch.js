@@ -35,7 +35,6 @@ export const useFetch = (url) => {
             controller.abort()
         }
     }, [url])
-
     return {data, isPending, error}
 }
 
